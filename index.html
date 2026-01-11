@@ -8,10 +8,13 @@
   <h1>접속 성공</h1>
 
   <script>
-    const params = new URLSearchParams(location.search);
-    if (params.get("key") !== "open123") {
-      document.body.innerHTML = "접근 불가";
-    }
-  </script>
+  const params = new URLSearchParams(location.search);
+
+  if (params.get("key") === "open123") {
+    history.replaceState(null, "", location.pathname);
+  } else {
+    document.body.innerHTML = "접근 불가";
+  }
+</script>
 </body>
 </html>
