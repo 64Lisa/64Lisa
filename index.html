@@ -1,39 +1,43 @@
 <!doctype html>
 <html lang="ko">
-  
 <head>
-<meta charset="utf-8">
-<title>리사 사이트</title>
-<link rel="icon" href="리사프로필.png">
-<style>
-body{
-margin: 0;
-background-image: url("배경.png"); /* 업로드한 파일명 그대로 */
-background-size: cover;      /* 화면 꽉 채움 */
-background-position: center; /* 중앙 배치 */
-background-repeat: no-repeat;
-background-attachment: fixed; /* 스크롤해도 고정 */
-color: white;                /* 글자색 */
-text-align: center;          /* 글자 중앙 정렬 */
-}</style>
+  <meta charset="utf-8">
+  <title>리사 사이트</title>
+  <link rel="icon" href="favicon.png">
+
+  <style>
+    body {
+      margin: 0;
+      background-image: url("배경.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: white;
+      text-align: center;
+      font-family: sans-serif;
+    }
+    #app {
+      padding-top: 100px; /* 화면 상단에서 조금 내려오기 */
+    }
+  </style>
 </head>
-
 <body>
-<div id="app"></div>
+  <div id="app"></div>
 
-<script>
-const params = new URLSearchParams(location.search);
-const app = document.getElementById("app");
-if (sessionStorage.getItem("passed") === "yes"){
-app.innerHTML = "<h1>접속 성공</h1>";
-}else if (params.get("key") === "open123") {
-sessionStorage.setItem("passed", "yes");
-history.replaceState(null, "", location.pathname);
-app.innerHTML = "<h1>접속 성공</h1>";
-}else{
-app.textContent = "Access Restricted";
-}
+  <script>
+    const app = document.getElementById("app");
+    const params = new URLSearchParams(location.search);
 
-</script>
+    if (sessionStorage.getItem("passed") === "yes") {
+      app.innerHTML = "<h1>접속 성공</h1>";
+    } else if (params.get("key") === "open123") {
+      sessionStorage.setItem("passed", "yes");
+      history.replaceState(null, "", location.pathname);
+      app.innerHTML = "<h1>접속 성공</h1>";
+    } else {
+      app.innerHTML = "error";
+    }
+  </script>
 </body>
 </html>
