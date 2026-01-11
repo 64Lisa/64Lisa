@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8">
-  <title>접근 제한 사이트</title>
+  <title>리사 사이트</title>
 </head>
 <body>
   <h1>접속 성공</h1>
@@ -13,7 +13,7 @@
   if (params.get("key") === "open123") {
     history.replaceState(null, "", location.pathname);
   } else {
-    document.body.innerHTML = "접근 불가";
+    document.body.innerHTML = "error";
   }
 </script>
 </body>
