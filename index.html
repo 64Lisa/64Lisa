@@ -1,22 +1,23 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <title>리사 사이트</title>
+<meta charset="utf-8">
+<title>리사 사이트</title>
 </head>
 <body>
-  <div id="app"></div>
-
-  <script>
-    const params = new URLSearchParams(location.search);
-    const app = document.getElementById("app");
-
-    if (params.get("key") === "open123") {
-      history.replaceState(null, "", location.pathname);
-      app.innerHTML = "<h1>접속 성공</h1>";
-    } else {
-      app.textContent = "error";
-    }
-  </script>
+<div id="app"></div>
+<script>
+const params = new URLSearchParams(location.search);
+const app = document.getElementById("app");
+if (sessionStorage.getItem("passed") === "yes"){
+app.innerHTML = "<h1>접속 성공</h1>";
+}else if (params.get("key") === "open123") {
+sessionStorage.setItem("passed", "yes");
+history.replaceState(null, "", location.pathname);
+app.innerHTML = "<h1>접속 성공</h1>";
+}else{
+app.textContent = "error";
+}
+</script>
 </body>
 </html>
