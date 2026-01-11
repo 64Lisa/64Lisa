@@ -29,17 +29,25 @@
     const app = document.getElementById("app");
     const params = new URLSearchParams(location.search);
 
-    const REDIRECT_URL = "https://64lisa.github.io/error/"; // ← 이동할 사이트
-    const KEY_VALUE = "FL'sS1!T1";
+    // 이동할 사이트 (키 없으면)
+    const REDIRECT_URL = "https://64lisa.github.io/error/";
 
-    if (sessionStorage.getItem("passed") === "yes") {
+    // 허용 키
+    const VALID_KEY = "FL'sS1!T1";
+
+    // 세션에 통과한 키 저장
+    const usedKey = sessionStorage.getItem("passedKey");
+
+    if (usedKey === VALID_KEY) {
+      // 이미 FL 키로 통과했으면 그대로 성공 화면
       app.innerHTML = "<h1>접속 성공</h1>";
-    } else if (params.get("key") === KEY_VALUE) {
-      sessionStorage.setItem("passed", "yes");
-      history.replaceState(null, "", location.pathname);
+    } else if (params.get("key") === VALID_KEY) {
+      // FL 키로 처음 통과
+      sessionStorage.setItem("passedKey", VALID_KEY);
+      history.replaceState(null, "", location.pathname); // 주소창에서 키 제거
       app.innerHTML = "<h1>접속 성공</h1>";
     } else {
-      // 키 없으면 즉시 이동
+      // 키 없거나 다른 키면 두 번째 사이트로 이동
       location.replace(REDIRECT_URL);
     }
   </script>
