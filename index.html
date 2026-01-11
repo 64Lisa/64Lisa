@@ -18,7 +18,7 @@
       font-family: sans-serif;
     }
     #app {
-      padding-top: 100px; /* 화면 상단에서 조금 내려오기 */
+      padding-top: 100px;
     }
   </style>
 </head>
@@ -29,14 +29,18 @@
     const app = document.getElementById("app");
     const params = new URLSearchParams(location.search);
 
+    const REDIRECT_URL = "https://www.google.com"; // ← 이동할 사이트
+    const KEY_VALUE = "open123";
+
     if (sessionStorage.getItem("passed") === "yes") {
       app.innerHTML = "<h1>접속 성공</h1>";
-    } else if (params.get("key") === "open123") {
+    } else if (params.get("key") === KEY_VALUE) {
       sessionStorage.setItem("passed", "yes");
       history.replaceState(null, "", location.pathname);
       app.innerHTML = "<h1>접속 성공</h1>";
     } else {
-      app.innerHTML = "Access Restricted";
+      // 키 없으면 즉시 이동
+      location.replace(REDIRECT_URL);
     }
   </script>
 </body>
