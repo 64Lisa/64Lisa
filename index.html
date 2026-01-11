@@ -1,12 +1,26 @@
 <!doctype html>
 <html lang="ko">
+  
 <head>
 <meta charset="utf-8">
 <title>리사 사이트</title>
 <link rel="icon" href="리사프로필.png">
+<style>
+body{
+margin: 0;
+background-image: url("배경.png"); /* 업로드한 파일명 그대로 */
+background-size: cover;      /* 화면 꽉 채움 */
+background-position: center; /* 중앙 배치 */
+background-repeat: no-repeat;
+background-attachment: fixed; /* 스크롤해도 고정 */
+color: white;                /* 글자색 */
+text-align: center;          /* 글자 중앙 정렬 */
+}</style>
 </head>
+
 <body>
 <div id="app"></div>
+
 <script>
 const params = new URLSearchParams(location.search);
 const app = document.getElementById("app");
@@ -19,6 +33,7 @@ app.innerHTML = "<h1>접속 성공</h1>";
 }else{
 app.textContent = "Access Restricted";
 }
+
 </script>
 </body>
 </html>
