@@ -40,12 +40,12 @@
 
     if (usedKey === VALID_KEY) {
       // 이미 FL 키로 통과했으면 그대로 성공 화면
-      app.innerHTML = "<h1>접속 성공</h1>";
+      app.innerHTML = "<h1>해당 페이지는 접속 성공 시 나타나는 테스트 페이지입니다.-1</h1>";
     } else if (params.get("key") === VALID_KEY) {
       // FL 키로 처음 통과
       sessionStorage.setItem("passedKey", VALID_KEY);
       history.replaceState(null, "", location.pathname); // 주소창에서 키 제거
-      app.innerHTML = "<h1>접속 성공</h1>";
+      app.innerHTML = "<h1>해당 페이지는 접속 성공 시 나타나는 테스트 페이지입니다.-2</h1>";
     } else {
       // 키 없거나 다른 키면 두 번째 사이트로 이동
       location.replace(REDIRECT_URL);
